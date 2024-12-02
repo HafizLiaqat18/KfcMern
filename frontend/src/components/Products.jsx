@@ -43,11 +43,12 @@ function Products() {
           ))
         ) : (
           newFilterProducts.length > 0 ? (
-            newFilterProducts.map(product => (
-              <KfcCard key={product.id} product={product} />
+            newFilterProducts.map((product,i) => (
+              <KfcCard key={i}product={product} />
             ))
           ) : (
-            <div className='w-full h-full flex justify-center items-center '>
+           
+            <div className='w-full h-full flex justify-center items-center ' >
             <div className='w-1/2'>
 
            <EmptyProductList text="Exciting items are coming your way soon! Stay tuned for updates." />

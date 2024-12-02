@@ -6,10 +6,10 @@ import { allProductsAtom, filteredProductsAtom } from '../../atom';
 
 function Category() {
   const [, setFilteredProducts] = useAtom(filteredProductsAtom);
-  // const [allProducts, setAllProducts] = useAtom(allProductsAtom);
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("All");
   const [loadingCategories, setLoadingCategories] = useState(true);
+  const [mesg, setMesg] = useState(null); // Define the missing state
 
   useEffect(() => {
     async function getCategories() {
@@ -18,7 +18,14 @@ function Category() {
         const response = await getApi("category");
         setCategories(response.data.data);
       } catch (err) {
-        setMesg({ success: false, message: err.message === "Request failed with status code 404" ? "Invalid Email and Password" : err.message === "Request failed with status code 500" ? "Something went wrong! Check your connection" : err.message });
+        setMesg({ 
+            success: false, 
+            message: err.message === "Request failed with status code 404" 
+                ? "Invalid Email and Password" 
+                : err.message === "Request failed with status code 500" 
+                ? "Something went wrong! Check your connection" 
+                : err.message 
+        });
       } finally {
         setLoadingCategories(false);
       }
@@ -33,6 +40,11 @@ function Category() {
 
   return (
     <div className='bg-black text-white flex gap-3 flex-wrap justify-evenly items-center px-5 py-6'>
+      {mesg && (
+        <div className={`text-center py-2 ${mesg.success ? "text-green-500" : "text-red-500"}`}>
+          {mesg.message}
+        </div>
+      )}
       {loadingCategories ? (
         <Circles
           height="80"

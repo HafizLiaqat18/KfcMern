@@ -12,10 +12,10 @@ async function connectDB() {
        await mongoose.connect(mongoURI, {
             serverSelectionTimeoutMS: 5000, 
         });
-       console.log("Connect with db")
+    //    console.log("Connect with db")
     } catch (err) {
-        console.log("Connection error")
-        console.log(err.message)
+        // console.log("Connection error")
+        // console.log(err.message)
         process.exit(1); 
     }
 }

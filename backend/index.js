@@ -3,7 +3,7 @@ dotenv.config();
 
 import express from 'express';
 import cors from "cors";
-import mongodbConfig from "./configrations/mondodbConfig.js";
+// import mongodbConfig from "./configrations/mondodbConfig.js";
 import registrationRoutes from "./routes/registrationRoutes.js";
 import productsRoutes from './routes/productRoutes.js';
 import categoryRoutes from "./routes/category.js";
@@ -15,7 +15,7 @@ const app = express();
 const port = process.env.PORT || 5000;
 
 app.use(cors({
-    origin: 'http://localhost:5173', 
+    origin: process.env.FRONT_END_URL, 
     credentials: true 
 }));
 
