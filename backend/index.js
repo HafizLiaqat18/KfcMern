@@ -16,7 +16,8 @@ const port = process.env.PORT || 5000;
 
 const allowedOrigins = [
     process.env.FRONT_END_URL,
-    "http://localhost:3000" 
+    "http://localhost:3000",
+    "http://localhost:5173" // Add your frontend's URL
 ];
 
 app.use(cors({
@@ -28,9 +29,8 @@ app.use(cors({
         }
     },
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true
+    credentials: true // Allow cookies to be sent
 }));
-
 
 app.use(cookieParser());
 app.use(express.json());
