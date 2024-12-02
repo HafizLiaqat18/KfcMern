@@ -57,12 +57,13 @@ async function login (req, res)  {
     try {
 
         const { email, password } = req.body;
+        // console.log(email)
         const findUser = await registration.findOne({ email });
         if(!findUser) return res.status(404).send({message:"User not Found ",success:false,data:null, status:404});
         bcrypt.compare(password, findUser.password, function (err, result) {
             if(result){
                 const token = generateToken(findUser);
-                res.cookie("token",token)
+                res.cookie("token", token);
                 return res.status(200).send({message:"User Login Successfully", data:{email},success:true})
             }else{
                 return res.status(401).send({message:"Incorrect Password",data:null, status:401,success:false})
@@ -70,6 +71,7 @@ async function login (req, res)  {
         
         });
     } catch (err) {
+        console.log(err.message)
         return res.status(500).send({message:"Internal Server Error ",success:false ,data:null, status:500})
 
     }

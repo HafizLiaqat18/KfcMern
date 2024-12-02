@@ -11,7 +11,7 @@ async function postApi(endpoint, data) {
 
 async function getApi (endpoint){
     const response = await axios.get(`http://localhost:5000/${endpoint}`,{withCredentials:true});
-    
+    // console.log(response)
     return response;
 }
 

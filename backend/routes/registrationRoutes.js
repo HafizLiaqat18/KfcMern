@@ -6,6 +6,6 @@ import { registerUser,login,logout } from "../controllers/registerationControlle
 const route = express.Router();
 
 route.post("/registerUser", registerUser);
-route.post("/login",login );
+route.post("/login",login);
 route.get("/logout",logout)
 export default route;
