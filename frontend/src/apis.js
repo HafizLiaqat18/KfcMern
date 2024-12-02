@@ -11,6 +11,7 @@ async function postApi(endpoint, data) {
 }
 
 
+
 async function getApi(endpoint) {
     const response = await axios.get(`${import.meta.env.VITE_BACKENDURL}${endpoint}`, { withCredentials: true });
     return response;

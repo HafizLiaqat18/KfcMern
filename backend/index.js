@@ -14,12 +14,10 @@ const app = express();
 
 const port = process.env.PORT || 5000;
 
-const allowedOrigins = [
-    process.env.FRONT_END_URL,
-];
+
 
 app.use(cors({
-    origin: allowedOrigins,
+    origin: process.env.FRONT_END_URL,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true 
 }));
