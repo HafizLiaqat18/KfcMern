@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useForm } from "react-hook-form";
 import { useNavigate } from 'react-router-dom';
-import { getApi, postApi } from '../apis';
+import {  postApi } from '../apis';
 import { useAtom } from 'jotai';
 import { alertMesg } from '../../atom';
 
@@ -21,7 +21,7 @@ function RegistrationPage() {
         formState: { errors: loginErrors },
     } = useForm();
 
-
+ 
 
     const navigate = useNavigate();
 
