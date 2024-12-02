@@ -8,6 +8,7 @@ const mongoURI = process.env.MONGO_URI;
 
 async function connectDB() {
     try {
+        // console.log("hello")
        
        await mongoose.connect(mongoURI, {
             serverSelectionTimeoutMS: 5000, 

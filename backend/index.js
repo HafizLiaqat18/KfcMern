@@ -3,7 +3,7 @@ dotenv.config();
 
 import express from 'express';
 import cors from "cors";
-// import mongodbConfig from "./configrations/mondodbConfig.js";
+import mongodbConfig from "./configrations/mondodbConfig.js";
 import registrationRoutes from "./routes/registrationRoutes.js";
 import productsRoutes from './routes/productRoutes.js';
 import categoryRoutes from "./routes/category.js";
@@ -16,20 +16,12 @@ const port = process.env.PORT || 5000;
 
 const allowedOrigins = [
     process.env.FRONT_END_URL,
-    "http://localhost:3000",
-    "http://localhost:5173" // Add your frontend's URL
 ];
 
 app.use(cors({
-    origin: (origin, callback) => {
-        if (!origin || allowedOrigins.includes(origin)) {
-            callback(null, true);
-        } else {
-            callback(new Error('Not allowed by CORS'));
-        }
-    },
+    origin: allowedOrigins,
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true // Allow cookies to be sent
+    credentials: true 
 }));
 
 app.use(cookieParser());
